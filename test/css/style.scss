@@ -1,0 +1,61 @@
+*{
+  margin: 0;
+  padding: 0;
+
+  background-color: #333;
+  color: #ccc;
+}
+#menu-toggle{
+  display: block;
+  a{
+    // 밑줄을 없애준 작업
+    text-decoration: none;
+    // 텍스트가 안 보이도록 해준 작업
+    // ? 왜 li 태그에 적용시키지 않으면 안보이게 할 수 없는 것일까??
+    li{
+      color: #333;
+    }
+    // ? 이 부분을 어디에 적용시켜야 할까??
+    // 트랜지션을 color에만 적용 0.3s 가속도
+    transition: color 0.3s ease;
+    &:hover{
+      color: salmon;
+    }
+  }
+  input{
+    display: block;
+    width: 40px;
+    height: 32px;
+    // 어떤 상황이든 겹쳐져서 위에 나타나야 하는 부분
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    // 이 부분에선 cursor를 pointer(손가락 모양의 포인터)로 준다
+    cursor: pointer;
+    // opacity를 조절해서 숨겨줌
+    opacity: 0;
+    // ?input 태그를 겹쳐준 것이기 때문에 가장 위에 와서 체크되고 작동해야하는 것이기 때문에 z-index 값을 가장 높게 준 것
+    z-index: 2;
+  }
+  span{
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    background: #ccc;
+    border-radius: 3px;
+    // ?사실 이 부분은 직접적인 체크박스(=input)가 아니라 선택하는 부분에 깔린 부분이다 직접적인 선택이 아니라 밑의 인터랙션이 보여지는 부분
+    z-index: 1;
+    // ?https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin
+    // transform-origin: x-offset y-offset;
+    transform-origin: 4px 0px;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), 
+    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+    opacity 0.55s ease;
+
+    // easing : 가속도 관련 제어
+    // bezier: 곡선
+    // 움직임을 제어할때 '등속도'만으로는 표현하기 어려운 탄력을 부여하기위해 모션등에서 매우 자주 활용
+    
+  }
+}
