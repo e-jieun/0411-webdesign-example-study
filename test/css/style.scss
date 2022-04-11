@@ -34,7 +34,7 @@
     cursor: pointer;
     // opacity를 조절해서 숨겨줌
     opacity: 0;
-    // ?input 태그를 겹쳐준 것이기 때문에 가장 위에 와서 체크되고 작동해야하는 것이기 때문에 z-index 값을 가장 높게 준 것
+    // !input 태그를 겹쳐준 것이기 때문에 가장 위에 와서 체크되고 작동해야하는 것이기 때문에 z-index 값을 가장 높게 준 것
     z-index: 2;
     // !input type="checkbox"이기 때문에 체크된 span태그
 
@@ -72,13 +72,13 @@
     margin-bottom: 5px;
     background: #ccc;
     border-radius: 3px;
-    // ?사실 이 부분은 직접적인 체크박스(=input)가 아니라 선택하는 부분에 깔린 부분이다 직접적인 선택이 아니라 밑의 인터랙션이 보여지는 부분
+    // !사실 이 부분은 직접적인 체크박스(=input)가 아니라 선택하는 부분에 깔린 부분이다 직접적인 선택이 아니라 밑의 인터랙션이 보여지는 부분
     z-index: 1;
     // ?https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin
     // transform-origin: x-offset y-offset;
     // ? 이 부분이 움직임을 주는 부분이라는 것은 알겠지만 cubic-bezier가 정확히 뭘 의미하는지는 잘 모르겠음
     // https://cubic-bezier.com/#.17,.67,.83,.67
-    // ?예를 들면 에펙이나 프리미어의 그래프에서 효과 움직임을 조절할 때 사용하는 그래프와 비슷한 것 같다, 근데 숫자로 보니까 잘 모르겠는 점....
+    // !예를 들면 에펙이나 프리미어의 그래프에서 효과 움직임을 조절할 때 사용하는 그래프와 비슷한 것 같다, 근데 숫자로 보니까 잘 모르겠는 점....
     // https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function
     transform-origin: 4px 0px;
     transition: transform .5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background .5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity .55s ease;
