@@ -36,6 +36,34 @@
     opacity: 0;
     // ?input 태그를 겹쳐준 것이기 때문에 가장 위에 와서 체크되고 작동해야하는 것이기 때문에 z-index 값을 가장 높게 준 것
     z-index: 2;
+    // !input type="checkbox"이기 때문에 체크된 span태그
+
+    // !--------------------여기부터-------------------
+    &:checked~span{
+      // 불투명도
+      opacity: 1;
+      // !translate: 요소의 위치 변경
+      // 
+      transform: rotate(45deg) translate(-2px -1px);
+      background: #333;
+    }
+    // &:checked~span:nth-child(1){
+    //   transform: rotate(-45deg) translate(-2px -1px);
+    //   background: #333;
+    // }
+    &:checked~span:nth-last-child(3){
+      opacity: 0;
+      transform: rotate(0deg) scale(0.2, 0.2);
+    }
+    &:checked~span:nth-last-child(2){
+      transform: rotate(-45deg) translate(0, -1px);
+      background: #333;
+
+    }
+    // !--------------------여기까지-------------------
+    &:checked~ul{
+      transform: none;
+    }
   }
   span{
     display: block;
@@ -48,14 +76,53 @@
     z-index: 1;
     // ?https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin
     // transform-origin: x-offset y-offset;
+    // ? 이 부분이 움직임을 주는 부분이라는 것은 알겠지만 cubic-bezier가 정확히 뭘 의미하는지는 잘 모르겠음
+    // https://cubic-bezier.com/#.17,.67,.83,.67
+    // ?예를 들면 에펙이나 프리미어의 그래프에서 효과 움직임을 조절할 때 사용하는 그래프와 비슷한 것 같다, 근데 숫자로 보니까 잘 모르겠는 점....
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function
     transform-origin: 4px 0px;
-    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), 
-    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-    opacity 0.55s ease;
-
+    transition: transform .5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background .5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity .55s ease;
     // easing : 가속도 관련 제어
     // bezier: 곡선
     // 움직임을 제어할때 '등속도'만으로는 표현하기 어려운 탄력을 부여하기위해 모션등에서 매우 자주 활용
     
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin
+    // !그래픽 툴에서 중심점을 옮겨주는 것과 같은 원리
+    &:first-child{
+      // x-offset y-offset;
+      transform-origin: 0% 0%;
+    }
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-child
+    // !nth-child()와 반대로 마지막부터 계산
+    &:nth-last-child(2){
+      transform-origin: 0% 100%;
+    }
+  }
+}
+#menu{
+  // menu con setting을 위한 속성부여
+  position: absolute;
+  width: 300px;
+  height: 100vh;
+  
+  // marign set
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+
+  background: #ededed;
+  list-style-type: none;
+  // !고해상도에서 저해상도의 폰트가 깨지지 않도록 smoothing 해주는 작업이라고 함
+  -webkit-font-smoothing: antialiased;
+  // !그래픽 툴에서 중심점을 옮겨주는 것과 같은 원리
+  transform-origin: 0% 0%;
+  // ?접어두는 효과
+  transform: translate(-100%, 0);
+  // 이행: 변환 0.5초 동안 cubic-bezier를 찍은 곡선 그래프의 값을 따라서 인터랙션을 줌
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  li{
+    // 상하 좌우;
+    padding: 10px 0;
+    font-size: 22px;
   }
 }
