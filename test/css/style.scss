@@ -39,31 +39,31 @@
     // !input type="checkbox"이기 때문에 체크된 span태그
 
     // !--------------------여기부터-------------------
-    &:checked~span{
-      // 불투명도
-      opacity: 1;
-      // !translate: 요소의 위치 변경
-      // 
-      transform: rotate(45deg) translate(-2px -1px);
-      background: #333;
-    }
-    // &:checked~span:nth-child(1){
-    //   transform: rotate(-45deg) translate(-2px -1px);
-    //   background: #333;
-    // }
-    &:checked~span:nth-last-child(3){
-      opacity: 0;
-      transform: rotate(0deg) scale(0.2, 0.2);
-    }
-    &:checked~span:nth-last-child(2){
-      transform: rotate(-45deg) translate(0, -1px);
-      background: #333;
+  }
+  input:checked~span{
+    // 불투명도
+    opacity: 1;
+    // !translate: 요소의 위치 변경
+    // 
+    transform: rotate(45deg) translate(-2px -1px);
+    background: #333;
+  }
+  // &:checked~span:nth-child(1){
+  //   transform: rotate(-45deg) translate(-2px -1px);
+  //   background: #333;
+  // }
+  input:checked~span:nth-last-child(3){
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+  input:checked~span:nth-last-child(2){
+    transform: rotate(-45deg) translate(0, -1px);
+    background: #333;
 
-    }
-    // !--------------------여기까지-------------------
-    &:checked~ul{
-      transform: none;
-    }
+  }
+  // !--------------------여기까지-------------------
+  input:checked~ul{
+    transform: none;
   }
   span{
     display: block;
