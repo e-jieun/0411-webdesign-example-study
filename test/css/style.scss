@@ -1,28 +1,36 @@
-*{
+* {
   margin: 0;
   padding: 0;
 
   background-color: #333;
   color: #ccc;
 }
-#menu-toggle{
+
+#menu-toggle {
   display: block;
-  a{
+
+  position: relative;
+  top: 50px;
+  left: 50px;
+  z-index: 1;
+  // !user기 선택하지 않았을 때
+  user-select: none;
+
+  &>a {
     // 밑줄을 없애준 작업
     text-decoration: none;
-    // 텍스트가 안 보이도록 해준 작업
-    // ? 왜 li 태그에 적용시키지 않으면 안보이게 할 수 없는 것일까??
-    li{
-      color: #333;
-    }
+    color: #333;
+    transition: color 0.3s ease;
+
     // ? 이 부분을 어디에 적용시켜야 할까??
     // 트랜지션을 color에만 적용 0.3s 가속도
-    transition: color 0.3s ease;
-    &:hover{
+
+    &:hover {
       color: salmon;
     }
   }
-  input{
+
+  &>input {
     display: block;
     width: 40px;
     height: 32px;
@@ -40,32 +48,8 @@
 
     // !--------------------여기부터-------------------
   }
-  input:checked~span{
-    // 불투명도
-    opacity: 1;
-    // !translate: 요소의 위치 변경
-    // 
-    transform: rotate(45deg) translate(-2px -1px);
-    background: #333;
-  }
-  // &:checked~span:nth-child(1){
-  //   transform: rotate(-45deg) translate(-2px -1px);
-  //   background: #333;
-  // }
-  input:checked~span:nth-last-child(3){
-    opacity: 0;
-    transform: rotate(0deg) scale(0.2, 0.2);
-  }
-  input:checked~span:nth-last-child(2){
-    transform: rotate(-45deg) translate(0, -1px);
-    background: #333;
 
-  }
-  // !--------------------여기까지-------------------
-  input:checked~ul{
-    transform: none;
-  }
-  span{
+  span {
     display: block;
     width: 33px;
     height: 4px;
@@ -85,26 +69,60 @@
     // easing : 가속도 관련 제어
     // bezier: 곡선
     // 움직임을 제어할때 '등속도'만으로는 표현하기 어려운 탄력을 부여하기위해 모션등에서 매우 자주 활용
-    
-    // https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin
-    // !그래픽 툴에서 중심점을 옮겨주는 것과 같은 원리
-    &:first-child{
-      // x-offset y-offset;
-      transform-origin: 0% 0%;
-    }
-    // https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-child
-    // !nth-child()와 반대로 마지막부터 계산
-    &:nth-last-child(2){
-      transform-origin: 0% 100%;
-    }
+
+
   }
+
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin
+  // !그래픽 툴에서 중심점을 옮겨주는 것과 같은 원리
+  span:first-child {
+    // x-offset y-offset;
+    transform-origin: 0% 0%;
+  }
+
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-child
+  // !nth-child()와 반대로 마지막부터 계산
+  span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+  }
+
+  &>input:checked~span {
+    // 불투명도
+    opacity: 1;
+    // !translate: 요소의 위치 변경
+    // 
+    transform: rotate(45deg) translate(-2px -1px);
+    background: #333;
+  }
+
+  // &:checked~span:nth-child(1){
+  //   transform: rotate(-45deg) translate(-2px -1px);
+  //   background: #333;
+  // }
+  &>input:checked~span:nth-last-child(3) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+
+  &>input:checked~span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px);
+    background: #333;
+
+  }
+
+  // !--------------------여기까지-------------------
+  input:checked~ul {
+    transform: none;
+  }
+
 }
-#menu{
+
+#menu {
   // menu con setting을 위한 속성부여
   position: absolute;
   width: 300px;
   height: 100vh;
-  
+
   // marign set
   margin: -100px 0 0 -50px;
   padding: 50px;
@@ -120,7 +138,8 @@
   transform: translate(-100%, 0);
   // 이행: 변환 0.5초 동안 cubic-bezier를 찍은 곡선 그래프의 값을 따라서 인터랙션을 줌
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  li{
+
+  li {
     // 상하 좌우;
     padding: 10px 0;
     font-size: 22px;
