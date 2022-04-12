@@ -1,8 +1,9 @@
-* {
+body {
   margin: 0;
   padding: 0;
   background-color: #333;
   color: #ccc;
+  font-family: "Avenir Next", "Avenir", sans-serif;
 }
 
 #menu-toggle {
@@ -17,18 +18,18 @@
           user-select: none;
 }
 
-#menu-toggle > a {
+#menu-toggle a {
   text-decoration: none;
   color: #333;
   -webkit-transition: color 0.3s ease;
   transition: color 0.3s ease;
 }
 
-#menu-toggle > a:hover {
+#menu-toggle a:hover {
   color: salmon;
 }
 
-#menu-toggle > input {
+#menu-toggle input {
   display: block;
   width: 40px;
   height: 32px;
@@ -45,6 +46,7 @@
   width: 33px;
   height: 4px;
   margin-bottom: 5px;
+  position: relative;
   background: #ccc;
   border-radius: 3px;
   z-index: 1;
@@ -66,28 +68,22 @@
           transform-origin: 0% 100%;
 }
 
-#menu-toggle > input:checked ~ span {
+#menu-toggle input:checked ~ span {
   opacity: 1;
-  -webkit-transform: rotate(45deg) translate(-2px -1px);
-          transform: rotate(45deg) translate(-2px -1px);
+  -webkit-transform: rotate(45deg) translate(-2px, -1px);
+          transform: rotate(45deg) translate(-2px, -1px);
   background: #333;
 }
 
-#menu-toggle > input:checked ~ span:nth-last-child(3) {
+#menu-toggle input:checked ~ span:nth-last-child(3) {
   opacity: 0;
   -webkit-transform: rotate(0deg) scale(0.2, 0.2);
           transform: rotate(0deg) scale(0.2, 0.2);
 }
 
-#menu-toggle > input:checked ~ span:nth-last-child(2) {
+#menu-toggle input:checked ~ span:nth-last-child(2) {
   -webkit-transform: rotate(-45deg) translate(0, -1px);
           transform: rotate(-45deg) translate(0, -1px);
-  background: #333;
-}
-
-#menu-toggle input:checked ~ ul {
-  -webkit-transform: none;
-          transform: none;
 }
 
 #menu {
@@ -113,5 +109,10 @@
 #menu li {
   padding: 10px 0;
   font-size: 22px;
+}
+
+#menu-toggle input:checked ~ ul {
+  -webkit-transform: none;
+          transform: none;
 }
 /*# sourceMappingURL=style.css.map */
